@@ -16,11 +16,14 @@
   height: 3rem;
 }
 #header > .header-top > .leave {
-  top: 1rem;
-  right: 1rem;
+  top: 1.5rem;
+  right: 1.5rem;
   position: absolute;
   cursor: pointer;
   z-index: 10;
+}
+#header > .header-top > .leave > .icon {
+  font-size: 1.8rem;
 }
 #header > .form {
   align-items: flex-start;
@@ -76,6 +79,8 @@
 #header > .form > .label > .cancel > .icon,
 #header > .form > .label > .search > .icon {
   cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0 1rem;
 }
 #header > .form > .label > .cancel.-visible,
 #header > .form > .label > .search.-visible {

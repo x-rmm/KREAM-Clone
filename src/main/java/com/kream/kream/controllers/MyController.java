@@ -47,7 +47,7 @@ public class MyController {
             modelAndView.setViewName("redirect:/login");
         }
         modelAndView.addObject("user", user);
-        modelAndView.setViewName("/my/index");
+        modelAndView.setViewName("my/index");
         return modelAndView;
     }
 
@@ -125,7 +125,7 @@ public class MyController {
             modelAndView.addObject("countOrderFinish", countOrderFinish);
             modelAndView.addObject("countBuyerFinish", countBuyerFinish);
             modelAndView.addObject("user", user);
-            modelAndView.setViewName("/my/buying");
+            modelAndView.setViewName("my/buying");
         }
         return modelAndView;
     }
@@ -154,7 +154,7 @@ public class MyController {
         modelAndView.addObject("sellerOrders", sellerOrders);
         modelAndView.addObject("sellerOrdersCompleteCount", sellerOrdersCompleteCount);
         modelAndView.addObject("sellerOrdersComplete", sellerOrdersComplete);
-        modelAndView.setViewName("/my/selling");
+        modelAndView.setViewName("my/selling");
         return modelAndView;
     }
 
@@ -184,7 +184,7 @@ public class MyController {
             modelAndView.setViewName("redirect:/login");
         } else {
             modelAndView.addObject("user", user);
-            modelAndView.setViewName("/my/profile");
+            modelAndView.setViewName("my/profile");
         }
         return modelAndView;
     }
@@ -201,9 +201,13 @@ public class MyController {
 
     @RequestMapping(value = "/modify-contact", method = RequestMethod.PATCH, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String patchContact(UserEntity user) {
+    public String patchContact(@SessionAttribute("user") UserEntity signedUser, UserEntity user) {
         Result result = this.myService.modifyContact(user);
+        if (result == CommonResult.SUCCESS) {
+            signedUser.setContact(user.getContact());
+        }
         JSONObject response = new JSONObject();
+        response.put("contact",user.getContact());
         response.put(Result.NAME, result.nameToLower());
         return response.toString();
     }
@@ -214,7 +218,7 @@ public class MyController {
         ModelAndView modelAndView = new ModelAndView();
         if (user != null) {
             modelAndView.addObject("user", user);
-            modelAndView.setViewName("/my/address");
+            modelAndView.setViewName("my/address");
         } else {
             modelAndView.setViewName("redirect:/login");
         }
@@ -269,7 +273,7 @@ public class MyController {
     public ModelAndView getAccount(@SessionAttribute(value = UserEntity.NAME_SINGULAR) UserEntity user) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", user);
-        modelAndView.setViewName("/my/account");
+        modelAndView.setViewName("my/account");
         return modelAndView;
     }
 

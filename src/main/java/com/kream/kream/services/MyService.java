@@ -144,7 +144,7 @@ public class MyService {
     public Result resolveRecoverPassword(UserEntity user, String newPassword) {
         if (user == null ||
                 user.getEmail() == null || user.getEmail().length() < 8 || user.getEmail().length() > 50 ||
-                newPassword == null || newPassword.length() < 8 || newPassword.length() > 50) {
+                newPassword == null || newPassword.length() < 6 || newPassword.length() > 50) {
             return CommonResult.FAILURE;
         }
 
@@ -165,7 +165,6 @@ public class MyService {
         if (this.userMapper.updateUser(dbUser) == 0) {
             throw new TransactionalException();
         }
-
         return CommonResult.SUCCESS;
     }
 

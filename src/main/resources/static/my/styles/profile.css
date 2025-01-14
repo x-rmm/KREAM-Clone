@@ -102,9 +102,9 @@
   left: 0;
   position: relative;
   padding: 40px 40px 160px 40px;
-  margin: 0 auto;
-  max-width: 1280px;
   width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
 }
 .container > .content > .-spring {
   flex-grow: 1;
@@ -183,7 +183,7 @@
 }
 .container > .content > .snb_area > .snb > .snb_list > .snb_menu > .menu_item > .menu_link.requestPage {
   color: #222;
-  font-weight: 700;
+  font-weight: bold;
 }
 .container > .content > .content_area {
   flex: 1;
@@ -203,6 +203,7 @@
 }
 .container > .content > .content_area > .my_profile > .content_title > .title > h3 {
   font-size: inherit;
+  font-weight: bold;
   line-height: 29px;
   box-sizing: border-box;
   margin: 0;

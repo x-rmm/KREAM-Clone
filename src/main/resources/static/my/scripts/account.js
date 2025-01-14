@@ -29,7 +29,7 @@ const accountLoad = () => {
                     <div class="input_box">
                         <h4 class="input_title">은행명</h4>
                         <label class="--obj-label" data-id="bankName">
-                            <input autocomplete="off" class="input_txt" id="selectedBank" name="bankName" placeholder="선택하세요"
+                            <input autocomplete="off" class="input_txt" id="selectedBank" name="bankName" placeholder="은행을 선택하세요"
                                    readonly type="text">
                             <button class="btn" type="button">
                                 <img alt="down-circle" class="image" height="24"
@@ -146,7 +146,7 @@ const accountLoad = () => {
                     <div class="input_box">
                         <h4 class="input_title">계좌번호</h4>
                         <label class="--obj-label" data-id="bankNumber">
-                            <input class="input_txt" name="accountNumber" placeholder="-없이 입력하세요" type="text">
+                            <input class="input_txt" name="accountNumber" placeholder="- 없이 입력하세요" type="text">
                             <span class="_warning"></span>
                         </label>
                     </div>

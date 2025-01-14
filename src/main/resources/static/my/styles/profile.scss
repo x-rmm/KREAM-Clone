@@ -80,9 +80,9 @@
     left: 0;
     position: relative;
     padding: 40px 40px 160px 40px;
-    margin: 0 auto;
-    max-width: 1280px;
     width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
 
     > .snb_area {
       @include flex(column, center, flex-start,);
@@ -155,7 +155,7 @@
 
                 &.requestPage {
                   color: #222;
-                  font-weight: 700;
+                  font-weight: bold;
                 }
 
 
@@ -184,6 +184,7 @@
 
             > h3 {
               font-size: inherit;
+              font-weight: bold;
               line-height: 29px;
               box-sizing: border-box;
               margin: 0;

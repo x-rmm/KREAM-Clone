@@ -267,7 +267,8 @@
   flex-shrink: 1;
 }
 .container > .content > .register-form > .button-container > .button:hover {
-  background-color: rgba(0, 0, 0, 0.26);
+  background-color: #222;
+  color: #ffffff;
 }
 .container > .content > .register-form > .button-container > .button:active {
   background-color: rgba(0, 0, 0, 0.34);

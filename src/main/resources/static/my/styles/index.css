@@ -102,9 +102,9 @@
   position: relative;
   height: 754px;
   padding: 40px 40px 160px 40px;
-  margin: 0 auto;
-  max-width: 1280px;
   width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
 }
 .container > .content > .-spring {
   flex-grow: 1;

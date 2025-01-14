@@ -54,7 +54,7 @@ public class UserController extends AbstractGeneralController {
     public ModelAndView getIndex(@SessionAttribute(value = UserEntity.NAME_SINGULAR, required = false) UserEntity user) {
         ModelAndView modelAndView = new ModelAndView();
         if (user == null) { // 세션에 UserEntity 정보가 없을 경우
-            modelAndView.setViewName("/login"); // "user/index" 뷰를 설정
+            modelAndView.setViewName("login"); // "user/index" 뷰를 설정
             modelAndView.addObject("kakaoClientId", this.kakaoClientId); // 카카오 클라이언트 ID를 모델에 추가
             modelAndView.addObject("kakaoRedirectUri", this.kakaoRedirectUri); // 카카오 리다이렉트 URI를 모델에 추가
             modelAndView.addObject("naverClientId", this.naverClientId); // 네이버 클라이언트 ID를 모델에 추가
@@ -106,10 +106,10 @@ public class UserController extends AbstractGeneralController {
             modelAndView.addObject("socialTypeCode", result.getPayload().getSocialTypeCode());
             modelAndView.addObject("socialId", result.getPayload().getSocialId());
             modelAndView.addObject("isSocialRegister", true);
-            modelAndView.setViewName("/join");
+            modelAndView.setViewName("join");
         } else if (result.getResult() == CommonResult.SUCCESS) {
             session.setAttribute(UserEntity.NAME_SINGULAR, result.getPayload());
-            modelAndView.setViewName("redirect:/my");
+            modelAndView.setViewName("redirect:/"); // 사용자의 마이페이지로 리다이렉트
         } else {
             modelAndView.setViewName("redirect:https://kauth.kakao.com/oauth/authorize?response_type");
         }
@@ -119,11 +119,9 @@ public class UserController extends AbstractGeneralController {
     @RequestMapping(value = "/login/naver", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
     public ModelAndView getLoginNaver(HttpSession session,
                                       @RequestParam(value = "code", required = false) String code) throws URISyntaxException, IOException, InterruptedException {
-        System.out.println("실행은 되었어요~");
         // UserService를 사용해 네이버 로그인 처리 로직을 수행
         // 네이버 OAuth에서 전달받은 인증 코드("code")를 사용
         ResultDto<Result, UserEntity> result = this.userService.handleNaverLogin(code);
-        System.out.println(result);
         // 응답 데이터를 담을 ModelAndView 객체 생성
         ModelAndView modelAndView = new ModelAndView();
 
@@ -133,21 +131,19 @@ public class UserController extends AbstractGeneralController {
             modelAndView.addObject("socialTypeCode", result.getPayload().getSocialTypeCode()); // 소셜 타입 코드
             modelAndView.addObject("socialId", result.getPayload().getSocialId()); // 소셜 사용자 ID
             modelAndView.addObject("isSocialRegister", true); // 소셜 회원가입 플래그
-            modelAndView.setViewName("/join"); // 다시 "user/login" 뷰로 이동
+            modelAndView.setViewName("join"); // 다시 "user/login" 뷰로 이동
             System.out.println("이건 소셜 타입 코드 :" + result.getPayload().getSocialTypeCode());
             System.out.println("이건 소셜 아이디 :" + result.getPayload().getSocialId());
 
             // 처리 결과가 '성공'인 경우
         } else if (result.getResult() == CommonResult.SUCCESS) {
             session.setAttribute(UserEntity.NAME_SINGULAR, result.getPayload()); // 사용자 정보를 세션에 저장
-            modelAndView.setViewName("redirect:/my/profile"); // 사용자의 마이페이지로 리다이렉트
-
+            modelAndView.setViewName("redirect:/"); // 사용자의 마이페이지로 리다이렉트
             // 그 외 실패 처리
         } else {
             // 네이버 인증 URL로 리다이렉트
             modelAndView.setViewName("redirect:https://kauth.naver.com/oauth/authorize?response_type");
         }
-
         // ModelAndView 객체 반환
         return modelAndView;
     }
@@ -156,7 +152,7 @@ public class UserController extends AbstractGeneralController {
     @ResponseBody
     public ModelAndView getJoin() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/join");
+        modelAndView.setViewName("join");
         return modelAndView;
     }
 
@@ -180,7 +176,7 @@ public class UserController extends AbstractGeneralController {
         Result result = this.userService.validateEmailToken(emailToken);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject(Result.NAME, result.nameToLower());
-        modelAndView.setViewName("/user/validateEmailToken");
+        modelAndView.setViewName("user/validateEmailToken");
         return modelAndView;
     }
 
@@ -188,7 +184,7 @@ public class UserController extends AbstractGeneralController {
     @ResponseBody
     public ModelAndView getFindEmail() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/findEmail");
+        modelAndView.setViewName("findEmail");
         return modelAndView;
     }
 
@@ -208,7 +204,7 @@ public class UserController extends AbstractGeneralController {
     @ResponseBody
     public ModelAndView getFindpassword() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/findpassword");
+        modelAndView.setViewName("findpassword");
         return modelAndView;
     }
 

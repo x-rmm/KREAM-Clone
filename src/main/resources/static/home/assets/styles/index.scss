@@ -80,19 +80,21 @@ body {
 
 #main {
   width: 100vw;
-  padding-top: 6rem;
+  margin-top: 6rem;
   flex: 1;
 
-  > .banner {
+  .banner {
     width: 100%;
-    height: 30rem;
-    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
+    height: 30rem;       /* 배너의 고정 높이 설정 */
+    overflow: hidden;    /* 부모 영역을 벗어난 부분은 잘리게 설정 */
 
     > .banner-image {
-      width: 100%;
-      height: 100%;
-      object-position: center;
-      object-fit: cover;
+      width: 100%;        /* 부모 요소의 너비에 맞추기 */
+      height: 100%;       /* 부모 요소의 높이에 맞추기 */
+      object-position: center; /* 이미지를 가운데에 배치 */
+      object-fit: cover; /* 이미지를 비율에 맞게 배너 영역에 맞춤 */
     }
   }
 

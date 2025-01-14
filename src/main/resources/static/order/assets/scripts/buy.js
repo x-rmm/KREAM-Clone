@@ -461,10 +461,10 @@ function bidFormSubmit() {
             const response = JSON.parse(xhr.responseText);
             const [title, content, onclick] = {
                 failure: ['구매 입찰', '알수 없는 이유로 구매 입찰에 실패하였습니다. 잠시 후 다시 시도해주세요.', ($dialog) => Dialog.hide($dialog)],
-                failure_price: ['구매 입찰', '가격이 20,000원 이하이거나 백원, 십원, 일원 단위가 포함되어있습니다. 가격을 다시 한번 확인해주세요', ($dialog) => {
+                failure_price: ['구매 입찰', '가격이 20,000원 이하이거나 백원, 십원, 일원 단위가 포함되어있습니다. <br><br>가격을 다시 한번 확인해주세요', ($dialog) => {
                     Dialog.hide($dialog);
                 }],
-                success: ['구매 입찰', '구매 입찰이 완료되었습니다. 입찰상황은 구매내역에서 확인해 주세요.', ($dialog) => {
+                success: ['구매 입찰', '구매 입찰이 완료되었습니다. <br><br>입찰상황은 구매내역에서 확인해 주세요.', ($dialog) => {
                     Dialog.hide($dialog);
                     location.href = './';
                 }],
@@ -539,9 +539,7 @@ function buyFormSubmit() {
                             Dialog.hide($dialog);
                         })
                     } else if (response['result'] === 'success') {
-                        Dialog.defaultOk('즉시 구매', '구매가 완료되었습니다. 진행상황은 구매내역에서 확인해 주세요.', ($dialog) => Dialog.hide($dialog));
-                        location.href = './';
-
+                        Dialog.defaultOk('즉시 구매', '구매가 완료되었습니다. <br><br>진행상황은 구매내역에서 확인해 주세요.', ($dialog) => {Dialog.hide($dialog); location.href = "/"});
                     } else {
                         Dialog.defaultOk('오류', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.', ($dialog) => Dialog.hide($dialog));
                     }

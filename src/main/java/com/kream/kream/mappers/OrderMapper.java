@@ -60,6 +60,7 @@ public interface OrderMapper {
     List<OrderStateDTO> selectBuyerOrderByState(@Param(value = "userId") int userId,
                                               @Param(value = "state") String state);
 
+
     int selectBuyerOrderCountByPending(@Param(value = "userId") int userId);
 
     int selectBuyerOrderCountByFinish(@Param(value = "userId") int userId);

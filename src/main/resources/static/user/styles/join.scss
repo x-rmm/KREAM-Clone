@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "global";
+@import "../../../static/assets/styles/global";
 
 #header {
   background-color: #ffffff;
@@ -73,7 +73,6 @@
   background-size: cover;
   position: relative;
   padding: 20px 0;
-
   background-color: #ebebeb;
 
   > .content {
@@ -232,7 +231,8 @@
           cursor: pointer;
 
           &:hover {
-            background-color: rgba(0, 0, 0, 0.26)
+            background-color: #222;
+            color: #ffffff;
           }
 
           &:active {

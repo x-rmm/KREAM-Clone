@@ -95,11 +95,13 @@ ol, ul {
   font-size: 1rem;
   font-weight: 800;
   padding: 2rem 0.875rem 0;
+  margin-bottom: 0.5rem;
 }
 .---dialog > ._content {
   background-color: #ffffff;
   border: none;
   color: #222222;
+  text-align: center;
   font-size: 0.8rem;
   margin-bottom: 1.25rem;
   padding: 0.5rem 2rem 0;

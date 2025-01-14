@@ -5,6 +5,10 @@ const $layerTitle = $layerButton.querySelector(':scope > .title');
 const $layers = document.querySelectorAll('.layer');
 const $buyMenu = document.querySelector('.container > .content > .snb_area > .snb > .snb_list > .snb_menu > .menu_item > .requestPage');
 
+window.onload = () => {
+    $buyMenu.click();
+}
+
 $buyMenu.onclick = () => {
     const tab1 = Array.from($tabLinks).find(link => link.getAttribute('rel') === 'content1');
     if (tab1) {

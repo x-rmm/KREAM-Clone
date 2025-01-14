@@ -55,7 +55,6 @@
           }
         }
       }
-
       > .search > .search-icon,
       > .cart > .cart-icon {
         width: 1.3rem;
@@ -81,9 +80,9 @@
     position: relative;
     height: 754px;
     padding: 40px 40px 160px 40px;
-    margin: 0 auto;
-    max-width: 1280px;
     width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
 
     > .snb_area {
       @include flex(column, center, flex-start,);

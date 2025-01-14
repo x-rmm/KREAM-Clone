@@ -1,6 +1,7 @@
 package com.kream.kream.results;
 
 public enum LoginResult implements Result {
+    SOCIAL_SUCCESS,
     FAILURE_NOT_VERIFIED,
     FAILURE_SUSPENDED,
     FAILURE_DUPLICATE_EMAIL,

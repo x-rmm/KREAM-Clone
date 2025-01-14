@@ -266,7 +266,7 @@ public class UserService {
                 .build();
     }
 
-    public Result login(UserEntity user)   {
+    public Result login(UserEntity user) {
         if (user == null ||
                 user.getEmail() == null || user.getEmail().length() < 8 || user.getEmail().length() > 50 ||
                 user.getPassword() == null || user.getPassword().length() < 6 || user.getPassword().length() > 50) {
@@ -323,6 +323,25 @@ public class UserService {
             }
             user.setPassword("");
             user.setVerified(true);
+
+            if (this.userMapper.selectUserByEmail(user.getEmail()) != null) {
+                return LoginResult.FAILURE_DUPLICATE_EMAIL; // 이메일 중복
+            }
+            if (this.userMapper.selectUserByContact(user.getContact()) != null) {
+                return LoginResult.FAILURE_DUPLICATE_CONTACT; // 연락처 중복
+            }
+            if (this.userMapper.selectUserByNickname(user.getNickname()) != null) {
+                return LoginResult.FAILURE_DUPLICATE_NICKNAME; // 닉네임 중복
+            }
+            user.setCreatedAt(LocalDateTime.now());
+
+            // 4. 사용자 정보 데이터베이스에 삽입
+            if (this.userMapper.insertUser(user) == 0) {
+                throw new TransactionalException();
+            }
+            return LoginResult.SOCIAL_SUCCESS;
+
+
         } else {
             if (!UserRegex.checkPassword(user.getPassword())) {
                 return CommonResult.FAILURE;
@@ -381,7 +400,6 @@ public class UserService {
             mimeMessageHelper.setText(mailText, true); // 이메일 본문 설정 (HTML 형식으로 처리)
             this.mailSender.send(mimeMessage);
         }
-
         return CommonResult.SUCCESS;
     }
 

@@ -289,7 +289,6 @@ const loadAddress = () => {
         }
 
 
-
     }
     xhr.open('GET', `./address/`);
     xhr.send();
@@ -362,11 +361,10 @@ $AddressForm.onsubmit = (e) => {
                 content: '새로운 주소를 등록합니다',
                 buttons: [{
                     text: '확인',
-                    onclick: ($dialog) => Dialog.hide($dialog),
+                    onclick: ($dialog) => {Dialog.hide($dialog); location.reload();}
                 }]
             });
             loadAddress();
-            location.reload();
         }
     };
     xhr.open('POST', '/my/address');

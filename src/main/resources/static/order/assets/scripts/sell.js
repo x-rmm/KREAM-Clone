@@ -764,10 +764,10 @@ function addFormSubmit() {
             const response = JSON.parse(xhr.responseText);
             const [title, content, onclick] = {
                 failure: ['판매 입찰', '알수 없는 이유로 구매 입찰에 실패하였습니다. 잠시 후 다시 시도해주세요.', ($dialog) => Dialog.hide($dialog)],
-                failure_price: ['판매 입찰', '가격이 20,000원 이하이거나 백원, 십원, 일원 단위가 포함되어있습니다. 가격을 다시 한번 확인해주세요', ($dialog) => {
+                failure_price: ['판매 입찰', '가격이 20,000원 이하이거나 백원, 십원, 일원 단위가 포함되어있습니다. <br><br>가격을 다시 한번 확인해주세요', ($dialog) => {
                     Dialog.hide($dialog);
                 }],
-                success: ['판매 입찰', '판매 입찰이 완료되었습니다..', ($dialog) => {
+                success: ['판매 입찰', '판매 입찰이 완료되었습니다.', ($dialog) => {
                     Dialog.hide($dialog);
                     location.href = './';
                 }],
@@ -809,27 +809,27 @@ function addFormSubmit() {
                 }
                 const response = JSON.parse(xhr.responseText);
                 const [title, content, onclick] = {
-                    failure: ['즉시 판매', '알수 없는 이유로 구매에 실패하였습니다. 잠시 후 다시 시도해주세요.', ($dialog) => Dialog.hide($dialog)],
+                    failure: ['즉시 판매', '알수 없는 이유로 구매에 실패하였습니다. <br><br>잠시 후 다시 시도해주세요.', ($dialog) => Dialog.hide($dialog)],
                     failure_unsigned: ['즉시 판매', '로그인에 문제가 있습니다. 확인 후 다시 시도해 주세요.', ($dialog) => {
                         Dialog.hide($dialog);
                     }],
-                    failure_price: ['즉시 판매', '구매자가 올린 가격과 일치하지 않습니다. 가격 확인 후 다시 시도해주세요.', ($dialog) => {
+                    failure_price: ['즉시 판매', '구매자가 올린 가격과 일치하지 않습니다. <br><br>가격 확인 후 다시 시도해주세요.', ($dialog) => {
                         Dialog.hide($dialog);
                     }],
-                    failure_address: ['즉시 판매', '반송 주소에 문제가 있습니다. 주소 확인 후 다시 시도해 주세요.', ($dialog) => {
+                    failure_address: ['즉시 판매', '반송 주소에 문제가 있습니다. <br><br>주소 확인 후 다시 시도해 주세요.', ($dialog) => {
                         Dialog.hide($dialog);
                     }],
-                    failure_account: ['즉시 판매', '정산 계좌에 문제가 있습니다. 계좌 확인 후 다시 시도해 주세요.', ($dialog) => {
+                    failure_account: ['즉시 판매', '정산 계좌에 문제가 있습니다. <br><br>계좌 확인 후 다시 시도해 주세요.', ($dialog) => {
                         Dialog.hide($dialog);
                     }],
-                    failure_buyerBid: ['즉시 판매', '구매자가 확인이 안됩니다. 잠시 후 다시 시도해 주세요.', ($dialog) => {
+                    failure_buyerBid: ['즉시 판매', '구매자가 확인이 안됩니다. <br><br>잠시 후 다시 시도해 주세요.', ($dialog) => {
                         Dialog.hide($dialog);
                     }],
-                    success: ['즉시 판매', '판매가 완료되었습니다. 진행상황은 판매내역에서 확인해 주세요.', ($dialog) => {
+                    success: ['즉시 판매', '판매가 완료되었습니다. <br><br>진행상황은 판매내역에서 확인해 주세요.', ($dialog) => {
                         Dialog.hide($dialog);
                         location.href = './';
                     }],
-                }[response['result']] || ['오류', '서버가 알 수 없는 응답을 반환하였습니다. 잠시 후 다시 시도해 주세요.', ($dialog) => Dialog.hide($dialog)];
+                }[response['result']] || ['오류', '서버가 알 수 없는 응답을 반환하였습니다. <br><br>잠시 후 다시 시도해 주세요.', ($dialog) => Dialog.hide($dialog)];
                 Dialog.show({
                     title: title,
                     content: content,

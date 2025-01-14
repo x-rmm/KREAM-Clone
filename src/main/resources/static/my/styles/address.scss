@@ -82,9 +82,9 @@
     position: relative;
     height: 754px;
     padding: 40px 40px 160px 40px;
-    margin: 0 auto;
-    max-width: 1280px;
     width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
 
     > .snb_area {
       @include flex(column, center, flex-start,);
@@ -187,6 +187,7 @@
 
             > h3 {
               font-size: inherit;
+              font-weight: bold;
               line-height: 29px;
 
             }
@@ -276,6 +277,7 @@
                     flex-direction: row;
                     align-items: center;
                     line-height: 17px;
+                    padding-bottom: 0.5rem;
 
                     > .name {
                       display: flex;
@@ -285,7 +287,6 @@
                       vertical-align: top;
                       box-sizing: border-box;
                       font-weight: 700;
-
                     }
 
                     > .mark {
@@ -312,6 +313,7 @@
                     flex-wrap: wrap;
                     font-size: 15px;
                     padding-top: 5px;
+                    padding-bottom: 0.3rem;
                     margin: 0;
 
                     > .hyphen {
